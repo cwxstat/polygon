@@ -63,6 +63,11 @@ func max(i []int) int {
 	return max
 }
 
+/* collect:
+
+     collect(list, [1,2,3,4,6], 1)
+	 will skip first row 1, and only collect columns 1,2,3,4,6
+*/
 func collect(raw [][]string, indexes []int, skipRows int) [][]string {
 
 	max := max(indexes)
