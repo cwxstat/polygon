@@ -15,12 +15,14 @@ type INDUSTRY struct {
 	values   [][]string
 	sector   map[string][]string
 	industry map[string][]string
+	ticker   map[string][]string
 }
 
 func NewIndustry() *INDUSTRY {
 	i := &INDUSTRY{url: url}
 	i.sector = map[string][]string{}
 	i.industry = map[string][]string{}
+	i.ticker = map[string][]string{}
 	return i
 }
 
@@ -97,6 +99,7 @@ func (i *INDUSTRY) buildIndustry() ([][]string, error) {
 	for _, v := range i.values {
 		i.sector[v[2]] = append(i.sector[v[2]], v[0])
 		i.industry[v[3]] = append(i.industry[v[3]], v[0])
+		i.ticker[v[0]] = []string{v[1], v[2], v[3], v[4]}
 	}
 
 	return i.values, nil
